@@ -1,5 +1,6 @@
 #include <stdio.h>
-main(){
+int main(void){
 	char cadena[]="Hello Word";
 	printf("%s",cadena);
+	return 0;
 }
