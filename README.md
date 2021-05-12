@@ -1,2 +1,5 @@
 # hello_word
-Hola mundo 
+
+"Hello World" implemented in C programming language.
+
+This repo also serves for learning git.
