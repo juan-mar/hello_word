@@ -1,5 +1,5 @@
 /*
- *	MODULO TIMEPO
+ *	source tiempo.c
  *
  */
 #include "tiempo.h"
@@ -7,12 +7,12 @@
 static unsigned long int var_tm;
 
 /*prototipos propios del modulo*/
-static void * tiempo(void *arg);	
+static void * mgr_timer(void *arg);	
 
 /*
  * Thread que acumula tiempo
  * */
-static void * tiempo(void *arg){
+static void * mgr_timer(void *arg){
 	while(1){
 		usleep(MSTOUS(ACCTIME));
 		var_tm+=ACCTIME;/* acumulo tiempo equivalente a la presicion dada en compilacion */
@@ -21,10 +21,10 @@ static void * tiempo(void *arg){
 }
 
 /*Inicializacion de timpo*/
-int tiempo_init(void){
+int timer_init(void){
 	int error;
-	pthread_t tiempo_th;
-	error=pthread_create(&tiempo_th,NULL,tiempo,NULL);
+	pthread_t timer_th;
+	error=pthread_create(&timer_th,NULL,mgr_timer,NULL);
 //	pthread_join(tiempo_th,NULL);
 	return error; /*error=0 implica que se pudo crear el thread de tiempo correctamente*/
 }
@@ -38,14 +38,14 @@ void tiempo_fin(void){
 /*
  * funcion para devolver el tiempo trasncurrido
  * */
-unsigned long int get_tiempo(void){
+unsigned long int get_timer(void){
 	return var_tm;
 }
 
 /*
  *funcion para resetear el tiempo
  * */
-void reset_tiempo(void){
+void reset_timer(void){
 	var_tm=0;
 }
 

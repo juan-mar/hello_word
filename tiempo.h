@@ -18,6 +18,15 @@
 /*Convierete millis a micros*/
 #define MSTOUS(t) ((t)*1000) 
 
+/* ----- estructura tiempo ----- */
+/*
+ * timer id, con valor de tiempo
+ * 
+typedef struct{
+	const pthread_t timer_id;
+	unsigned long int my_timer;
+}timer_t;
+*/
 /* -----  Prototipos de funciones publicas ----- */
 /*
  * time_init(), se encarga de inicializar el hilo (thread) del tiempo 
@@ -25,7 +34,7 @@
  * 0 si no hubo errores al momento de crear el hilo. 
  * -1 si no se pudo crear el thread
  * */
-int tiempo_init(void);
+int timer_init(void);
 
 /*
  * 
@@ -38,13 +47,13 @@ void timepo_fin(void);
  * o desde que se reseteo por ultima vez.
  * Devuelve: la variable tiempo.
  * */
-unsigned long int get_tiempo(void);
+unsigned long int get_timer(void);
 
 /*
  * reset_time(), resetea el contador, dejandolo en 0.
  * 	
  * */
-void reset_tiempo(void);
+void reset_timer(void);
 
 
 #endif
