@@ -17,7 +17,7 @@ static void * mgr_timer(void *arg){
 		usleep(MSTOUS(ACCTIME));
 		var_tm+=ACCTIME;/* acumulo tiempo equivalente a la presicion dada en compilacion */
 	}
-//	return NULL;
+	return NULL;
 }
 
 /*Inicializacion de timpo*/
